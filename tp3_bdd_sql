@@ -1,0 +1,313 @@
+-- phpMyAdmin SQL Dump
+-- version 4.6.6deb4
+-- https://www.phpmyadmin.net/
+--
+-- Client :  localhost:3306
+-- Généré le :  Ven 28 Février 2020 à 15:48
+-- Version du serveur :  10.1.38-MariaDB-0+deb9u1
+-- Version de PHP :  7.0.33-0+deb9u3
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Base de données :  `medecin`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `Consultation`
+--
+
+CREATE TABLE `Consultation` (
+  `id` int(11) NOT NULL,
+  `Dateheure` datetime NOT NULL,
+  `idMedecin` int(11) NOT NULL,
+  `idPatient` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Contenu de la table `Consultation`
+--
+
+INSERT INTO `Consultation` (`id`, `Dateheure`, `idMedecin`, `idPatient`) VALUES
+(1, '2020-02-01 06:00:00', 1, 1),
+(2, '2020-02-20 07:45:00', 1, 1),
+(3, '2020-02-24 08:41:00', 1, 2),
+(4, '2020-02-18 13:42:00', 2, 2),
+(5, '2020-02-05 06:31:00', 2, 2),
+(6, '2020-02-17 06:38:00', 3, 3),
+(7, '2020-02-19 07:39:00', 3, 4),
+(8, '2020-02-24 05:40:00', 3, 5),
+(9, '2020-02-14 06:32:00', 3, 6),
+(10, '2020-02-17 06:40:00', 4, 8),
+(11, '2020-02-16 06:41:00', 4, 9),
+(12, '2020-02-15 07:38:00', 5, 10),
+(13, '2020-02-24 11:15:00', 5, 11),
+(14, '2020-02-24 11:26:00', 5, 12),
+(15, '2020-02-03 07:17:00', 7, 13),
+(16, '2020-02-29 19:25:00', 7, 13),
+(17, '2020-02-11 00:00:00', 7, 14),
+(18, '2020-02-20 17:20:00', 8, 15),
+(19, '2020-02-15 13:50:00', 8, 16),
+(20, '2020-02-09 22:34:00', 8, 16),
+(21, '2020-02-19 11:50:00', 8, 16),
+(22, '2020-02-05 09:38:00', 9, 16),
+(23, '2020-02-13 10:45:00', 9, 17),
+(24, '2020-02-19 09:46:00', 9, 17),
+(25, '2020-02-13 07:47:00', 9, 18),
+(26, '2020-02-12 11:12:00', 9, 18),
+(27, '2020-02-16 07:47:00', 10, 1),
+(28, '2020-02-04 10:32:25', 10, 1),
+(29, '2020-02-10 08:27:00', 10, 2),
+(30, '2020-02-19 11:00:00', 1, 2);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `Medecin`
+--
+
+CREATE TABLE `Medecin` (
+  `id` int(11) NOT NULL,
+  `nom` varchar(50) NOT NULL,
+  `prenom` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Contenu de la table `Medecin`
+--
+
+INSERT INTO `Medecin` (`id`, `nom`, `prenom`) VALUES
+(1, 'Casile', 'Basile'),
+(2, 'Albert ', 'Adamkiewicz'),
+(3, 'Charles ', 'Bell'),
+(4, 'Claude', 'Bernard'),
+(5, 'Christian', 'Cabrol'),
+(6, 'William', 'Castle'),
+(7, 'Jean-Nicolas', 'Corvisart'),
+(8, 'James', 'Douglas'),
+(9, 'Pierre', 'Gerdy'),
+(10, 'Edouard', 'Imbeaux');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `Medicament`
+--
+
+CREATE TABLE `Medicament` (
+  `id` int(11) NOT NULL,
+  `nom` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Contenu de la table `Medicament`
+--
+
+INSERT INTO `Medicament` (`id`, `nom`) VALUES
+(1, 'Abufene'),
+(2, 'Aciclovir'),
+(3, 'Advigel'),
+(4, 'Aloltil'),
+(5, 'apaisygel'),
+(6, 'Baume'),
+(7, 'Berrocca'),
+(8, 'Bronchokod'),
+(9, 'CARBOCISTEINE'),
+(10, 'CETIRIZINE'),
+(11, 'CLARIX'),
+(12, 'CODOTUSSYL'),
+(13, 'DIASEPTYL'),
+(14, 'DIOSMINE'),
+(15, 'DRILL'),
+(16, 'ERYTHEDERMYL'),
+(17, 'HEXASEPTINE'),
+(18, 'HUMEX'),
+(19, 'LAROSCORBINE'),
+(20, 'MINOXIDIL');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `Patient`
+--
+
+CREATE TABLE `Patient` (
+  `id` int(11) NOT NULL,
+  `nom` varchar(50) NOT NULL,
+  `prenom` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Contenu de la table `Patient`
+--
+
+INSERT INTO `Patient` (`id`, `nom`, `prenom`) VALUES
+(1, '', ''),
+(2, 'Thierry', 'Bonté'),
+(3, 'Cédric ', 'Maisse'),
+(4, 'Nicolas ', 'Belvalette'),
+(5, 'Mohamed ', 'Boulafrad'),
+(6, 'Bruno', 'Paleni'),
+(7, 'Yvette', 'Dupille'),
+(8, 'Fany', 'Ruin'),
+(9, 'Renaud', 'Deschamps'),
+(10, 'Dina', 'Asher'),
+(11, 'Shelly', 'Fraser'),
+(12, 'Jessica', 'Hines'),
+(13, 'Leonise', 'Robinson'),
+(14, 'Samantha', 'Glance'),
+(15, 'vera', 'Krepkina'),
+(16, 'Evelyne', 'Ashford'),
+(17, 'Trayvon', 'Bromell'),
+(18, 'Kinue', 'Hitomi'),
+(19, 'Stanislawa', 'Walasiewicz');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `Prescription`
+--
+
+CREATE TABLE `Prescription` (
+  `idConsultation` int(11) NOT NULL,
+  `idMedicament` int(11) NOT NULL,
+  `Quantité` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Contenu de la table `Prescription`
+--
+
+INSERT INTO `Prescription` (`idConsultation`, `idMedicament`, `Quantité`) VALUES
+(1, 8, 3),
+(1, 12, 3),
+(6, 3, 6),
+(4, 3, 7),
+(4, 6, 6),
+(4, 6, 5),
+(12, 5, 6),
+(3, 17, 3),
+(3, 9, 5),
+(5, 7, 7),
+(3, 12, 6),
+(16, 7, 6),
+(20, 10, 6),
+(5, 11, 7),
+(3, 9, 4),
+(5, 10, 7),
+(3, 11, 5),
+(6, 15, 8),
+(6, 14, 3),
+(18, 5, 3),
+(15, 14, 3),
+(23, 4, 5),
+(2, 13, 2),
+(8, 13, 2),
+(9, 15, 3),
+(15, 16, 1),
+(6, 15, 6),
+(4, 16, 2),
+(8, 6, 7),
+(29, 14, 1),
+(6, 16, 1),
+(23, 8, 5),
+(7, 12, 1),
+(5, 8, 1),
+(10, 18, 6),
+(2, 14, 25),
+(7, 13, 1),
+(20, 3, 1),
+(23, 2, 1),
+(23, 15, 1);
+
+--
+-- Index pour les tables exportées
+--
+
+--
+-- Index pour la table `Consultation`
+--
+ALTER TABLE `Consultation`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `idMedecin` (`idMedecin`),
+  ADD KEY `idPatient` (`idPatient`,`Dateheure`) USING BTREE;
+
+--
+-- Index pour la table `Medecin`
+--
+ALTER TABLE `Medecin`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `Medicament`
+--
+ALTER TABLE `Medicament`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `Patient`
+--
+ALTER TABLE `Patient`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `Prescription`
+--
+ALTER TABLE `Prescription`
+  ADD KEY `idConsultation` (`idConsultation`),
+  ADD KEY `idMedicament` (`idMedicament`);
+
+--
+-- AUTO_INCREMENT pour les tables exportées
+--
+
+--
+-- AUTO_INCREMENT pour la table `Consultation`
+--
+ALTER TABLE `Consultation`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+--
+-- AUTO_INCREMENT pour la table `Medecin`
+--
+ALTER TABLE `Medecin`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+--
+-- AUTO_INCREMENT pour la table `Medicament`
+--
+ALTER TABLE `Medicament`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+--
+-- AUTO_INCREMENT pour la table `Patient`
+--
+ALTER TABLE `Patient`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+--
+-- Contraintes pour les tables exportées
+--
+
+--
+-- Contraintes pour la table `Consultation`
+--
+ALTER TABLE `Consultation`
+  ADD CONSTRAINT `Consultation_ibfk_1` FOREIGN KEY (`idMedecin`) REFERENCES `Medecin` (`id`),
+  ADD CONSTRAINT `Consultation_ibfk_2` FOREIGN KEY (`idPatient`) REFERENCES `Patient` (`id`);
+
+--
+-- Contraintes pour la table `Prescription`
+--
+ALTER TABLE `Prescription`
+  ADD CONSTRAINT `Prescription_ibfk_1` FOREIGN KEY (`idMedicament`) REFERENCES `Medicament` (`id`),
+  ADD CONSTRAINT `Prescription_ibfk_2` FOREIGN KEY (`idConsultation`) REFERENCES `Consultation` (`id`);
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
